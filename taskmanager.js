@@ -56,3 +56,26 @@ class TaskManager {
     let tasksHtml = tasksHtmlList.join(" \n ");
     document.getElementById('myList').innerHTML = tasksHtml;
   }
+  getTaskById(taskId) {
+    let foundTask = taskId;
+   for (let tasks = 0; tasks < this.tasks.length; this.tasks++) {
+      let task = this.tasks[tasks];
+     if (task.id === taskId) {
+        foundTask = task;
+        return(foundTask);
+    }
+   }
+  }
+ }
+
+
+var newTaskVar = new TaskManager();
+
+function clickMe(){
+ validFormFieldInput("name");
+ validFormFieldInput("description");
+ validFormFieldInput("assignedTo");
+ newTaskVar.addTask();
+ newTaskVar.render();
+
+}
