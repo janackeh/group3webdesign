@@ -35,5 +35,24 @@ class TaskManager {
       status: 'TODO'
     };
     this.tasks.push(task);
-    
+
+  }
+  render(){
+    let tasksHtmlList = [];
+    for (let taskLoopCount = 0; taskLoopCount < this.tasks.length; taskLoopCount++) {
+        let currentTask = this.tasks[taskLoopCount];
+        const d = new Date(this.tasks[taskLoopCount].dueDate);
+        let formattedDate = `${d.getMonth()}-${d.getDate()}-${d.getFullYear()}`;
+        let taskHtml = createTaskHtml(
+          this.tasks[taskLoopCount].id,
+          this.tasks[taskLoopCount].name, 
+          this.tasks[taskLoopCount].description, 
+          this.tasks[taskLoopCount].assignedTo, 
+          formattedDate, 
+          this.tasks[taskLoopCount].status
+          );
+          tasksHtmlList.push(taskHtml);
+    }
+    let tasksHtml = tasksHtmlList.join(" \n ");
+    document.getElementById('myList').innerHTML = tasksHtml;
   }
