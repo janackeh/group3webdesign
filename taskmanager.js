@@ -20,3 +20,20 @@ function createTaskHtml(id, name, description, assignedTo, dueDate, status) {
   return html;
 
 }
+class TaskManager {
+  constructor(currentId) {
+    this.tasks = [];
+    this.currentId = 0;
+  }
+  addTask(name, description, assignedTo, dueDate, status) {
+    const task = {
+      id: this.currentId++,
+      name: document.getElementById('name').value,
+      description: document.getElementById('description').value,
+      assignedTo: document.getElementById('assignedTo').value,
+      dueDate: document.getElementById('dueDate').value,
+      status: 'TODO'
+    };
+    this.tasks.push(task);
+    
+  }
